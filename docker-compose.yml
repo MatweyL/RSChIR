@@ -1,0 +1,21 @@
+version: '3'
+
+
+services:
+  apache:
+    build: php/
+    ports:
+      - 8888:80
+    volumes:
+      - ./php:/var/www/html
+
+  mysql:
+    build: db/
+    ports:
+      - 3306:3306
+    
+    environment:
+      MYSQL_ROOT_USER: root
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: appDB
+      MYSQL_PASSWORD: password
