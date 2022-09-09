@@ -8,9 +8,13 @@ services:
       - 8888:80
     volumes:
       - ./php:/var/www/html
+    links:
+      - mysql
 
   mysql:
-    build: db/
+    image: mysql
+    volumes:
+      - ./sql:/docker-entrypoint-initdb.d
     ports:
       - 3306:3306
     
