@@ -31,11 +31,12 @@
  -->
 <main class="container">
     <div class="mt-3"><h1>Задание 1</h1></div>
+    <div class="mt-3"><div class="text-muted">На вход поступает 16-битное число (максимальное - 65535)</div></div>
     <div class="mt-3">
         <form  method="GET">
             <div class="form-group">
                 <label for="shape_data_input">Параметры фигуры</label>
-                <input type="number" class="form-control" name="shape_data" id="shape_data_input" aria-describedby="shape_data_input_help" size="16" min="0" placeholder="Введите число" required>
+                <input type="number" class="form-control" name="shape_data" id="shape_data_input" aria-describedby="shape_data_input_help" size="16" min="0" max="65535" placeholder="Введите число" required>
                 <small id="shape_data_input_help" class="form-text text-muted">
                     <ul>
                         <li>Первые 2 бита - фигура</li>
@@ -47,7 +48,18 @@
             </div>
         </form>
     </div>
+<div class="">
+    <?php
+        $a = array(0b00=>"112", 0b01=>"3", 0b10=>"1324", 0b11=>"Win!");
+        var_dump($a);
+        printf($a[0b10]);
+        printf('\n');
+        $n = 65535;
+        $result = $n & 0b1100000000000000 >> 14;
+        printf($a[$result])
 
+    ?>
+</div>
 </main>
 </body>
 </html>
