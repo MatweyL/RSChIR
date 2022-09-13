@@ -50,14 +50,12 @@
     </div>
 <div class="">
     <?php
-        $a = array(0b00=>"112", 0b01=>"3", 0b10=>"1324", 0b11=>"Win!");
-        var_dump($a);
-        printf($a[0b10]);
-        printf('\n');
-        $n = 65535;
-        $result = $n & 0b1100000000000000 >> 14;
-        printf($a[$result])
-
+        include_once 'decoder.php';
+        include_once 'renderer.php';
+        $decoder = new ShapeParametersDecoder;
+        $shape_parameters =  $decoder->decode_parameters(40000);
+        $renderer = new ShapeRenderer(10);
+        echo $renderer->get_svg_shape($shape_parameters);
     ?>
 </div>
 </main>
