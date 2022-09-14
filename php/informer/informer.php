@@ -7,8 +7,8 @@
 </head>
 <body>
 <main class="container">
-    <div class="mt-3"><h1>Задание 2</h1></div>
-    <div class="mt-3"><div class="text-muted">Сортировка выбором (Вариант (16 - 1) % 5 + 1 = 4)</div></div>
+    <div class="mt-3"><h1>Задание 3</h1></div>
+    <div class="mt-3"><div class="text-muted">Вывод информации о сервере</div></div>
     <div class="mt-3">
     <form  method="GET">
             <div class="form-group d-flex flex-column " id="array">
@@ -20,31 +20,14 @@
     </div>
 <div class="">
     <?php
-        include_once 'selectSorter.php';
-        include_once 'utils.php';
-        if  (array_key_exists('numbers', $_GET)) {
-            $numbers = array_map('intval', $_GET['numbers']);
-            foreach (selectSort($numbers) as $number) {
-                echo getValueInHTMLTag($number);
-            }
+        include_once 'commands.php';
+        if  (array_key_exists('command', $_GET)) {
+            echo $_GET['command'];
         } else {
             echo "no";
         }
     ?>
 </div>
 </main>
-<script type="text/javascript">
-	let array_form = document.getElementById("array");
-	let add_button = document.getElementById("add_field_button");
-	add_button.addEventListener("click", function () {
-		let input_field = document.createElement("input");
-		input_field.type = "number";
-		input_field.name = "numbers[]";
-        
-        
-		input_field.style.width = "100px";
-        array_form.appendChild(input_field);
-	});
-</script>
 </body>
 </html>
