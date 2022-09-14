@@ -10,10 +10,10 @@
 
 Кодирование фигуры:
 Форма (2 бита): 
-1. Круг (00)
-2. Квадрат (01)
-3. Прямоугольник (10)
-4. Треугольник (11)
+1. Круг (00) > 0
+2. Ромб (01) > 16 384
+3. Прямоугольник (10) > 32 768
+4. Треугольник (11) > 49 152
 
 Цвет (6 бита)
 1. Первые 2 бита - количество красного
@@ -53,9 +53,11 @@
         include_once 'decoder.php';
         include_once 'renderer.php';
         $decoder = new ShapeParametersDecoder;
-        $shape_parameters =  $decoder->decode_parameters(40000);
-        $renderer = new ShapeRenderer(10);
-        echo $renderer->get_svg_shape($shape_parameters);
+        if  (array_key_exists('shape_data', $_GET)) {
+            $shape_parameters =  $decoder->decode_parameters($_GET['shape_data']);
+            $renderer = new ShapeRenderer(10);
+            echo $renderer->get_svg_shape($shape_parameters);
+        }
     ?>
 </div>
 </main>
