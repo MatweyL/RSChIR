@@ -12,7 +12,7 @@
     <ul class="list-group">
         <li class="list-group-item"><a href="drawer/drawer.php">Задание 1</a></li>
         <li class="list-group-item"><a href="sorter/sorter.php">Задание 2</a></li>
-        <li class="list-group-item"><a href="#">Задание 3</a></li>
+        <li class="list-group-item"><a href="informer/informer.php">Задание 3</a></li>
     </ul>
     </div>
 

@@ -11,18 +11,23 @@
     <div class="mt-3"><div class="text-muted">Вывод информации о сервере</div></div>
     <div class="mt-3">
     <form  method="GET">
-            <div class="form-group d-flex flex-column " id="array">
-                
+            <div class="form-group">
+                <select name="command">
+                    <option selected>ls</option>
+                    <option>pwd</option>
+                    <option>whoami</option>
+                    <option>ps</option>
+                    <option>id</option>
+                </select>                
             </div>
-            <button type="button" class="btn btn-secondary" id="add_field_button">Добавить число</button>
-            <button type="submit" class="btn btn-primary">Отсортировать</button>
+            <button type="submit" class="btn btn-primary">Выполнить</button>
         </form>
     </div>
 <div class="">
     <?php
         include_once 'commands.php';
         if  (array_key_exists('command', $_GET)) {
-            echo $_GET['command'];
+            print_r(get_command_result($_GET['command']));
         } else {
             echo "no";
         }
