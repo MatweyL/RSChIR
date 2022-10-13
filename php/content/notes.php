@@ -8,5 +8,11 @@
 </head>
 <body>
     <h1>Eee it works</h1>
+        <?php
+        include_once "utils.php";
+        $id = get_current_user_id();
+        $n_crud = notes_crud();
+        print_r($n_crud->read_all($id));
+        ?>
 </body>
 </html>
