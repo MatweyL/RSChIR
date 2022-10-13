@@ -2,12 +2,22 @@ version: '3'
 
 
 services:
-  apache:
-    build: php/
-    ports:
-      - 8888:80
+  # apache:
+  #   build: php/
+  #   ports:
+  #     - 8888:80
+  #   volumes:
+  #     - ./php:/var/www/html
+  #   links:
+  #     - mysql
+  nginx:
+    image: nginx:latest
+    container_name: nginx
     volumes:
-      - ./php:/var/www/html
+        - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+        - ./nginx/html:/usr/share/nginx/html
+    ports:
+        - "8000:8000"
     links:
       - mysql
 
