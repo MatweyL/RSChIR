@@ -53,4 +53,10 @@ function get_current_user_id(): int {
     return $current_user_id;
 }
 
+function redirect($url, $statusCode = 303)
+{
+   header('Location: ' . $url, true, $statusCode);
+   die();
+}
+
 ?>
