@@ -2,6 +2,22 @@ version: '3'
 
 
 services:
+  php:
+    container_name: php
+    build: php/
+    expose: 
+      - "80"
+    volumes:
+      - ./php/content/:/var/www/html/
+      - ./php/conf/000-default.conf:/etc/apache2/sites-available/000-default.conf
+    environment:
+      - HOST=db
+      - USERNAME=user
+      - PASSWORD=password
+      - NAME=appDB
+    links:
+      - nginx
+      - mysql
   # apache:
   #   build: php/
   #   ports:
@@ -23,6 +39,7 @@ services:
 
   mysql:
     image: mysql
+    container_name: db
     volumes:
       - ./sql:/docker-entrypoint-initdb.d
     ports:
