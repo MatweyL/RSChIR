@@ -12,7 +12,11 @@
         include_once "utils.php";
         $id = get_current_user_id();
         $n_crud = notes_crud();
-        print_r($n_crud->read_all($id));
+        foreach ($n_crud->read_all($id) as $note) {
+            echo "<div>$note[0] $note[1] $note[2] $note[3]</div>";
+        }
+
         ?>
+        
 </body>
 </html>
