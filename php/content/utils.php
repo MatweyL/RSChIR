@@ -26,21 +26,6 @@ function notes_crud()
     return $n_crud;
 }
 
-
-function flash(?string $message = null)
-{
-    if ($message) {
-        $_SESSION['flash'] = $message;
-    } else {
-        if (!empty($_SESSION['flash'])) { ?>
-          <div class="alert alert-danger mb-3">
-              <?=$_SESSION['flash']?>
-          </div>
-        <?php }
-        unset($_SESSION['flash']);
-    }
-}
-
 function get_current_user_id(): int {
     $stmt = db()->prepare("SELECT id FROM users WHERE login = ?");
     $stmt->bind_param("s", $_SERVER['PHP_AUTH_USER']);

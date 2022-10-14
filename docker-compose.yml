@@ -18,14 +18,6 @@ services:
     links:
       - nginx
       - mysql
-  # apache:
-  #   build: php/
-  #   ports:
-  #     - 8888:80
-  #   volumes:
-  #     - ./php:/var/www/html
-  #   links:
-  #     - mysql
   nginx:
     image: nginx:latest
     container_name: nginx
