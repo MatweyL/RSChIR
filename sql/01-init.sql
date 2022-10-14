@@ -7,7 +7,7 @@ USE appDB;
 CREATE TABLE IF NOT EXISTS users (
   id INT(11) NOT NULL AUTO_INCREMENT,
   login VARCHAR(20) NOT NULL,
-  password_hash VARCHAR(255) NOT NULL,
+  password_hash CHAR(128) NOT NULL,
   PRIMARY KEY (ID),
   UNIQUE (login)
 );
