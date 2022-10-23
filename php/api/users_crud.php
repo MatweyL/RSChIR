@@ -48,7 +48,8 @@ class UsersCRUD {
         return $users;
     }
 
-    public function update(int $user_id, string $login, string $password_hash) {
+    public function update(int $user_id, string $login, string $password) {
+        $password_hash = password_hash($password, PASSWORD_BCRYPT);
         $sql = "UPDATE `users` SET `login` =  \"$login\", `password_hash` = \"$password_hash\" WHERE `id` = $user_id";
         if ($this->db->query($sql) === TRUE) {
             return "Успешно обновлена запись";

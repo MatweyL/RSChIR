@@ -15,11 +15,11 @@ switch ($method) {
     case 'POST':
         create();
         break;
-    case 'UPDATE':
-        
+    case 'PATCH':
+        update();
         break;
     case 'DELETE':
-        
+        delete();
         break;
     default:
         unknownMethod();
@@ -61,11 +61,28 @@ function read() {
 }
 
 function update() {
+    $data = json_decode(file_get_contents('php://input'), true);
+    if (isset($data["login"]) && isset($data["password"]) && isset($data["user_id"])) {
+        $u_crud = users_crud();
+        $response = $u_crud->update($data["user_id"], $data["login"], $data["password"]);
+        http_response_code(200);
+        echo json_encode($response);
+    } else {
+        http_response_code(404);
+    }
 
 }
 
 function delete() {
-
+    $data = json_decode(file_get_contents('php://input'), true);
+    if (isset($data["user_id"])) {
+        $u_crud = users_crud();
+        $response = $u_crud->delete($data["user_id"]);
+        http_response_code(200);
+        echo json_encode($response);
+    } else {
+        http_response_code(404);
+    }
 }
 
 
