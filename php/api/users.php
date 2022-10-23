@@ -54,10 +54,6 @@ function read() {
     } else {
         echo json_encode($u_crud->read_all());
     }
-    
-    // $data = json_decode(file_get_contents('php://input'), true);
-    
-    // echo json_encode($users);
 }
 
 function update() {
