@@ -57,4 +57,8 @@ function redirect($url, $statusCode = 303)
    die();
 }
 
+function get_response($data) {
+    return ["response"=> $data];
+}
+
 ?>

@@ -31,7 +31,7 @@ function create() {
         $n_crud = notes_crud();
         $response = $n_crud->create($data["user_id"], $data["title"], $data["body"]);
         http_response_code(200);
-        echo json_encode($response);
+        echo json_encode(get_response($response));
     } else {
         http_response_code(404);
     }
@@ -49,7 +49,7 @@ function read() {
             $response = $n_crud->read_all($user_id);
         }
         http_response_code(200);
-        echo json_encode($response);
+        echo json_encode(get_response($response));
     } else {
         http_response_code(404);
     }
@@ -61,7 +61,7 @@ function update() {
         $n_crud = notes_crud();
         $response = $n_crud->update($data["note_id"], $data["user_id"], $data["title"], $data["body"]);
         http_response_code(200);
-        echo json_encode($response);
+        echo json_encode(get_response($response));
     } else {
         http_response_code(404);
     }
@@ -74,7 +74,7 @@ function delete() {
         $n_crud = notes_crud();
         $response = $n_crud->delete($data["note_id"], $data["user_id"]);
         http_response_code(200);
-        echo json_encode($response);
+        echo json_encode(get_response($response));
     } else {
         http_response_code(404);
     }

@@ -31,7 +31,7 @@ function create() {
         $u_crud = users_crud();
         $response = $u_crud->create($data["login"], $data["password"]);
         http_response_code(200);
-        echo json_encode($response);
+        echo json_encode(get_response($response));
     } else {
         http_response_code(404);
     }
@@ -48,11 +48,11 @@ function read() {
         }
         else {
             http_response_code(200);
-            echo json_encode($user);
+            echo json_encode(get_response($user));
         }
 
     } else {
-        echo json_encode($u_crud->read_all());
+        echo json_encode(get_response($u_crud->read_all()));
     }
 }
 
@@ -62,7 +62,7 @@ function update() {
         $u_crud = users_crud();
         $response = $u_crud->update($data["user_id"], $data["login"], $data["password"]);
         http_response_code(200);
-        echo json_encode($response);
+        echo json_encode(get_response($response));
     } else {
         http_response_code(404);
     }
@@ -75,7 +75,7 @@ function delete() {
         $u_crud = users_crud();
         $response = $u_crud->delete($data["user_id"]);
         http_response_code(200);
-        echo json_encode($response);
+        echo json_encode(get_response($response));
     } else {
         http_response_code(404);
     }
