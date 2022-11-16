@@ -22,7 +22,7 @@ switch ($method) {
         delete();
         break;
     default:
-        unknownMethod();
+        http_response_code(405);
 }
 
 function create() {
@@ -60,9 +60,15 @@ function update() {
     $data = json_decode(file_get_contents('php://input'), true);
     if (isset($data["login"]) && isset($data["password"]) && isset($data["user_id"])) {
         $u_crud = users_crud();
-        $response = $u_crud->update($data["user_id"], $data["login"], $data["password"]);
-        http_response_code(200);
-        echo json_encode(get_response($response));
+        $user = $u_crud->read($data["user_id"]);
+        if (!$user) {
+            http_response_code(404);
+        } else {
+            $response = $u_crud->update($data["user_id"], $data["login"], $data["password"]);
+            http_response_code(200);
+            echo json_encode(get_response($response));
+        }
+        
     } else {
         http_response_code(404);
     }
@@ -73,9 +79,14 @@ function delete() {
     $data = json_decode(file_get_contents('php://input'), true);
     if (isset($data["user_id"])) {
         $u_crud = users_crud();
-        $response = $u_crud->delete($data["user_id"]);
-        http_response_code(200);
-        echo json_encode(get_response($response));
+        $user = $u_crud->read($data["user_id"]);
+        if (!$user) {
+            http_response_code(404);
+        } else {
+            $response = $u_crud->delete($data["user_id"]);
+            http_response_code(200);
+            echo json_encode(get_response($response));
+        }
     } else {
         http_response_code(404);
     }

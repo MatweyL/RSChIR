@@ -42,14 +42,18 @@ function read() {
     if (isset($_GET["user_id"]) && !empty(trim($_GET["user_id"]))) {
         $user_id = trim($_GET["user_id"]);
         $response = null;
+        http_response_code(200);
         if (isset($_GET["note_id"]) && !empty(trim($_GET["note_id"]))) {
             $note_id = trim($_GET["note_id"]);
             $response = $n_crud->read($note_id, $user_id);
         } else {
             $response = $n_crud->read_all($user_id);
         }
-        http_response_code(200);
-        echo json_encode(get_response($response));
+        if (!$response) {
+            http_response_code(404);
+        } else {
+            echo json_encode(get_response($response));
+        }
     } else {
         http_response_code(404);
     }
