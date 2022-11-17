@@ -1,4 +1,6 @@
 <?php
+    require "session.php";
+
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         include_once "utils.php";
         $user_id = get_current_user_id();

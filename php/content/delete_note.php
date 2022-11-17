@@ -1,5 +1,8 @@
 <?php
 
+require "session.php";
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["note_id"]) && !empty($_POST["note_id"])) {
     include_once "utils.php";
     $n_crud = notes_crud();

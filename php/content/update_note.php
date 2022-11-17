@@ -1,5 +1,7 @@
 <?php
 include_once "utils.php";
+require "session.php";
+
 $n_crud = notes_crud();
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["note_id"]) && !empty($_POST["note_id"])) {
     $note_id = trim($_POST["note_id"]);
