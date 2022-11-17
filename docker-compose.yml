@@ -18,6 +18,7 @@ services:
     links:
       - nginx
       - mysql
+      - redis
   nginx:
     image: nginx:latest
     container_name: nginx
@@ -43,3 +44,9 @@ services:
       MYSQL_DATABASE: appDB
       MYSQL_USER: user
       MYSQL_PASSWORD: password
+  redis:
+    container_name: redis
+    image: redis:alpine3.16
+    restart: always
+    ports:
+      - "6379:6379"
