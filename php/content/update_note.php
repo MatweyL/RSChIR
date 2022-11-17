@@ -45,6 +45,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["note_id"]) && !empty(tri
                   <a class="nav-link" href="/user/notes.php">Заметки</a>
                 </span>
                 <span class="nav-item">
+                  <a class="nav-link" href="/user/pdf_loading/pdf_list.php">Хранилище PDF</a>
+                </span>
+                <span class="nav-item">
                     <form class="form-inline" method="GET" action="/user/create_note.php">
                         <button class="btn btn-outline-success" type="submit">Создать</button>
                       </form>

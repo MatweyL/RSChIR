@@ -3,10 +3,6 @@ body {
     --bkg-color: #121212;
 }
 
-* {
-    font-family: Arial, Helvetica, sans-serif;
-}
-
 body {
     background: var(--bkg-color);
 }
