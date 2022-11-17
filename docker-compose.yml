@@ -8,7 +8,8 @@ services:
     expose: 
       - "80"
     volumes:
-      - ./php/api/:/var/www/html/
+      - ./php/php.ini:/usr/local/etc/php/conf.d/php.ini
+      - ./php/content/:/var/www/html/
       - ./php/conf/000-default.conf:/etc/apache2/sites-available/000-default.conf
     environment:
       - HOST=db
