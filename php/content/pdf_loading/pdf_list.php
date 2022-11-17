@@ -30,7 +30,7 @@ if (count($files) <= 2) {
     echo "<h2>Загруженные файлы</h2>";
     foreach ($files as $file) {
         if ($file != "." and $file != "..") {
-            echo "<div class='card'><a class='card-body' href='./files/".$file."'>".$file."</a></div>";
+            echo "<div class='card'><a class='card-body' href='./pdf/".$file."'>".$file."</a></div>";
         }
     }
 }

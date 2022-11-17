@@ -1,5 +1,6 @@
 <?php
-require "session.php";
+require_once "session.php";
+// echo phpinfo();
 ?>
 <!DOCTYPE html>
 <html lang="en">
