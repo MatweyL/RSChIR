@@ -1,6 +1,3 @@
-<?php
-require_once "session.php";
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,29 +44,18 @@ require_once "session.php";
           </nav>
           <hr>
         <div class="mt-3">
-            <h2>Заметки</h2>
+            <h2>Статистика</h2>
             <div class="mt-3">
                 <?php
-                    include_once "utils.php";
-                    $id = get_current_user_id();
-                    $n_crud = notes_crud();
-                    foreach ($n_crud->read_all($id) as $note) {
-                        echo "<div class='card mt-2'>
-                                <div class='card-body'>
-                                    <h5 class='card-title'>$note[1]</h5>
-                                    <p class='card-text'>$note[2]</p>
-                                    <div class=''>
-                                    <form method='GET' action='update_note.php' class='d-inline'><input type='number' name='note_id' value='$note[0]' hidden><button class='btn btn-outline-success' type='submit'>Редактировать</button></form>
-                                    <form` method='POST' action='delete_note.php' class='d-inline'><input type='number' name='note_id' value='$note[0]' hidden><button class='btn btn-outline-danger' type='submit'>Удалить</button></form>
-                                    </div>
-                                </div>
-                              </div>
-                                ";
-                        
-                    }
+                    require_once "generator.php";
+
+                    generate_data();
+                    
+                require_once "geo_plot.php";
+                
+                draw_geo_scatter();
                 ?>
-            </div>
-            <div class='mt-3'>
+                <img src="images/geo_plot.png" alt="plot_4.png">
             </div>
         </div>
     </main>

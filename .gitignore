@@ -1,3 +1,7 @@
 *.pdf
 *.docx
 *.json
+*.txt
+vendor/
+*.lock
+!composer.json
