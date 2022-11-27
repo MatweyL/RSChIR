@@ -58,6 +58,13 @@
                     draw_plot_pie();
                     draw_plot_bar();
                     draw_plot_scatter();
+                    require_once "watermark.php";
+
+                    $images = array("images/plot_pie.png", "images/plot_bar.png", "images/line_plot.png");
+
+                    foreach ($images as $image) {
+                        add_watermark($image);
+                    }
                 ?>
                 <img src="images/plot_pie.png" alt="plot_1.png">
                 <img src="images/plot_bar.png" alt="plot_2.png">
