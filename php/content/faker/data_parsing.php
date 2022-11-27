@@ -7,41 +7,41 @@ function get_raw_data(): array {
     return json_decode($input);
 }
 
-function get_century_count($data): array
+function get_week_days_count($data): array
 {
-    $century_count = array();
+    $week_days_count = array();
     foreach ($data as $row) {
-        $century = $row->century;
-        if(!isset($century_count[$century])) {
-            $century_count[$century] = 0;
+        $week_day = $row->day_of_week;
+        if(!isset($week_days_count[$week_day])) {
+            $week_days_count[$week_day] = 0;
         }
-        $century_count[$century] += 1;
+        $week_days_count[$week_day] += 1;
     }
-    return $century_count;
+    return $week_days_count;
 }
 
-function get_time_type_count($data): array
+function get_ages_count($data): array
 {
-    $time_type_count = array();
+    $ages_count = array();
     foreach ($data as $row) {
-        $timeType = floatval(substr($row->time, 0, 2));//->format('H');
-        if(!isset($time_type_count[$timeType])) {
-            $time_type_count[$timeType] = 0;
+        $age = $row->age;
+        if(!isset($ages_count[$age])) {
+            $ages_count[$age] = 0;
         }
-        $time_type_count[$timeType] += 1;
+        $ages_count[$age] += 1;
     }
-    return $time_type_count;
+    return $ages_count;
 }
 
 function get_labels_and_values($func) {
     $raw_data = get_raw_data();
 
     //use given func to array
-    $century_count = $func($raw_data);
+    $count = $func($raw_data);
 
 
-    $labels = array_keys($century_count);
-    $values = array_values($century_count);
+    $labels = array_keys($count);
+    $values = array_values($count);
     return array("labels" => $labels, "values" => $values);
 }
 

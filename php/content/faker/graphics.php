@@ -51,11 +51,45 @@
 
                     generate_data();
                     
-                require_once "geo_plot.php";
-                
-                draw_geo_scatter();
+                    require_once "simple_pie_plot.php";
+                    require_once "plot_bar.php";
+                    require_once "line_plot.php";
+                    
+                    draw_plot_pie();
+                    draw_plot_bar();
+                    draw_plot_scatter();
                 ?>
-                <img src="images/geo_plot.png" alt="plot_4.png">
+                <img src="images/plot_pie.png" alt="plot_1.png">
+                <img src="images/plot_bar.png" alt="plot_2.png">
+                <img src="images/line_plot.png" alt="plot_3.png">
+            </div>
+            <div class="mt-3">
+                <table class="table">
+                    <tr>
+                        <th>Имя</th>
+                        <th>Телефонный номер</th>
+                        <th>Компания</th>
+                        <th>Устройство</th>
+                        <th>Возраст</th>
+                        <th>День недели</th>
+                        <th>Метрика</th>
+                    </tr>
+                    <?php
+                    $data = get_raw_data();
+
+                    foreach ($data as $data_row) {
+                        echo "<tr>";
+                        echo "<td>".$data_row->name."</td>";
+                        echo "<td>".$data_row->phone_number."</td>";
+                        echo "<td>".$data_row->company."</td>";
+                        echo "<td>".$data_row->user_agent."</td>";
+                        echo "<td>".$data_row->age."</td>";
+                        echo "<td>".$data_row->day_of_week."</td>";
+                        echo "<td>".$data_row->number."</td>";
+                        echo "</tr>";
+                    }
+                    ?>
+                </table>
             </div>
         </div>
     </main>

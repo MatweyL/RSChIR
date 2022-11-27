@@ -48,13 +48,15 @@ class FakePeople
     public string $user_agent;
     public string $age;
     public string $day_of_week;
+    public string $number;
 
     public function __construct(string $name,
                                 string $phone_number,
                                 string $company,
                                 string $user_agent,
                                 string $age,
-                                string $day_of_week
+                                string $day_of_week,
+                                string $number
     )
     {
         $this->name = $name;
@@ -63,6 +65,7 @@ class FakePeople
         $this->user_agent = $user_agent;
         $this->age = $age;
         $this->day_of_week = $day_of_week;
+        $this->number = $number;
     }
 
 
