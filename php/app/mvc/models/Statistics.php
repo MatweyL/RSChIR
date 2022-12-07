@@ -145,7 +145,7 @@ class Statistics extends Model {
         $b1 = new Plot\BarPlot($databary);
         $b1->SetLegend($_GET['property']);
         $graph->Add($b1);
-        $graph->Stroke('mvc\models\images\plot_bar.png');
+        $graph->Stroke('mvc/models/images/plot_bar.png');
     }
 
     public function draw_plot_pie()
@@ -189,7 +189,7 @@ class Statistics extends Model {
         $graph->Add($lineplot);
 
         // Display the graph
-        $graph->Stroke('mvc\models\images\line_plot.png');
+        $graph->Stroke('mvc/models/images/line_plot.png');
 
     }
 
@@ -201,9 +201,9 @@ class Statistics extends Model {
 
         $images = array("mvc/models/images/plot_pie.png", "mvc/models/images/plot_bar.png", "mvc/models/images/line_plot.png");
 
-//        foreach ($images as $image) {
-//            $this->add_watermark($image);
-//        }
+        foreach ($images as $image) {
+            $this->add_watermark($image);
+        }
         $data = $this->get_raw_data();
         return array($images, $data);
     }
