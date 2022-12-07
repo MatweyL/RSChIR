@@ -8,7 +8,7 @@
         $title = trim($_POST["title"]);
         $body = trim($_POST["body"]);
         $n_crud->create($user_id, $title, $body);
-        redirect("/user/notes.php");
+        redirect("/user/show.php");
     }
 ?>
 <!DOCTYPE html>

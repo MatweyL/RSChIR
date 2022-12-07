@@ -17,6 +17,14 @@ return [
         'controller' => 'statistics',
         'action' => 'show'
     ],
+    'note' => [
+        'controller' => 'note',
+        'action' => 'show'
+    ],
+    'note/delete' => [
+        'controller' => 'note',
+        'action' => 'delete'
+    ],
 
 
 

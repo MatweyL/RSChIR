@@ -9,6 +9,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["note_id"]) && !empty($
     $note_id = trim($_POST["note_id"]);
     $user_id = get_current_user_id();
     $n_crud->delete($note_id, $user_id);
-    redirect("/user/notes.php");
+    redirect("/user/show.php");
 }
 ?>

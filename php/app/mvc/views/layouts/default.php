@@ -33,9 +33,9 @@
 <!--                <span class="nav-item">-->
 <!--                  <a class="nav-link" href="/user/adaptive/page.php">Адаптивная страница</a>-->
 <!--                </span>-->
-<!--                <span class="nav-item">-->
-<!--                  <a class="nav-link" href="/user/faker/graphics.php">Статистика</a>-->
-<!--                </span>-->
+                <span class="nav-item">
+                  <a class="nav-link" href="/statistics">Статистика</a>
+                </span>
 <!--                <span class="nav-item">-->
 <!--                    <form class="form-inline" method="GET" action="/user/create_note.php">-->
 <!--                        <button class="btn btn-outline-success" type="submit">Создать</button>-->

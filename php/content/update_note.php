@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["note_id"]) && !empty($
     $title = trim($_POST["title"]);
     $body = trim($_POST["body"]);
     $n_crud->update($note_id, $user_id, $title, $body);
-    redirect("/user/notes.php");
+    redirect("/user/show.php");
 }
 if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["note_id"]) && !empty(trim($_GET["note_id"]))) {
     $note_id = trim($_GET["note_id"]);
