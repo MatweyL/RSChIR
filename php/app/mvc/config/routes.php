@@ -25,6 +25,10 @@ return [
         'controller' => 'note',
         'action' => 'delete'
     ],
+    'note/update' => [
+        'controller' => 'note',
+        'action' => 'update'
+    ],
 
 
 

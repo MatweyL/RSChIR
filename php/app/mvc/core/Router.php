@@ -24,7 +24,13 @@ class Router
     public function match()
     {
         $url = trim($_SERVER['REQUEST_URI'], '/');
-        foreach ($this->routes as $route => $params) {
+        $pos = strpos($url, '?');
+
+        if ($pos) {
+            $url = substr($url, 0, $pos);
+        };
+
+            foreach ($this->routes as $route => $params) {
             if (preg_match($route, $url, $matches)) {
                 $this->params = $params;
                 return true;

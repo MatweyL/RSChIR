@@ -20,6 +20,21 @@ class NoteController extends Controller
         $this->view->redirect('/note');
     }
 
+    public function updateAction() {
+        if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["note_id"]) && !empty(trim($_GET["note_id"]))) {
+            $note_id = trim($_GET["note_id"]);
+            $note = $this->model->get($note_id);
+            $vars = [
+                'note' => $note
+            ];
+            $this->view->render('Редактировать заметку', $vars);
+        }
+        else if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["note_id"]) && !empty($_POST["note_id"])) {
+
+        }
+        $this->view->redirect('/note');
+    }
+
 //    public function apiAction(){
 //        $method = $_SERVER['REQUEST_METHOD'];
 //        #$url = $_SERVER['REQUEST_URI'];

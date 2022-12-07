@@ -8,7 +8,7 @@
                                     <h5 class='card-title'>" . $note[1] . "</h5>
                                     <p class='card-text'>" . $note[2] . "</p>
                                     <div class=''>
-                                    <form method='GET' action='' class='d-inline'><input type='number' name='note_id' value='" . $note[0] . "' hidden><button class='btn btn-outline-success' type='submit'>Редактировать</button></form>
+                                    <form method='GET' action='/note/update' class='d-inline'><input type='number' name='note_id' value='" . $note[0] . "' hidden><button class='btn btn-outline-success' type='submit'>Редактировать</button></form>
                                     <form method='POST' action='/note/delete' class='d-inline'><input type='number' name='note_id' value='" . $note[0] . "' hidden><button class='btn btn-outline-danger' type='submit'>Удалить</button></form>
                                     
                                     </div>
