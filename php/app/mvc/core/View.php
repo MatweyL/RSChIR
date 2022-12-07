@@ -20,7 +20,7 @@ class View {
             $content = ob_get_clean();
             require 'mvc/views/layouts/'.$this->layout.'.php';
         } else {
-            echo 'Вид не найден' . $this->path;
+            echo 'Вид не найден ' . $this->path;
         }
 
     }
