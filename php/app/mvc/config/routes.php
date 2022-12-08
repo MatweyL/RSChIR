@@ -29,6 +29,18 @@ return [
         'controller' => 'note',
         'action' => 'update'
     ],
+    'note/create' => [
+        'controller' => 'note',
+        'action' => 'create'
+    ],
+    'note/api' => [
+        'controller' => 'note',
+        'action' => 'api'
+    ],
+    'user/api' => [
+        'controller' => 'user',
+        'action' => 'api'
+    ],
 
 
 
