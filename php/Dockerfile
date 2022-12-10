@@ -3,7 +3,7 @@ FROM php:8.0-apache
 
 WORKDIR /var/www/html/
 COPY --from=composer /usr/bin/composer /usr/bin/composer
-ENV COMPOSER_ALLOW_SUPERUSER=1
+#ENV COMPOSER_ALLOW_SUPERUSER=1
 
 COPY ./content/composer.json ./
 

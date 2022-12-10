@@ -11,7 +11,7 @@ function generate_data()
     // for include russian PersonName
     $faker->addProvider(new Faker\Provider\ru_RU\Person($faker));
     $faker->addProvider(new Faker\Provider\ru_RU\Company($faker));
-    $faker->addProvider(new Faker\Provider\ru_RU\Color($faker));
+#    $faker->addProvider(new Faker\Provider\ru_RU\Color($faker));
 
     // generate 50 records
     for ($i = 0; $i < 50; $i++) {
