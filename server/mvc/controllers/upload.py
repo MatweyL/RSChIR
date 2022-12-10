@@ -11,7 +11,10 @@ upload = Blueprint('upload', __name__)
 
 @upload.get('/')
 def get_upload_page():
-    return render_template("upload/list.html")
+    files = os.listdir(get_upload_path())
+    files.remove(".gitkeep")
+    print(files)
+    return render_template("upload/list.html", files=files)
 
 
 @upload.post('/')
