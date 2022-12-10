@@ -22,4 +22,4 @@ class NoteUserRepository:
 
     @staticmethod
     def is_email_exist(email):
-        return db.session.execute(db.select(NoteUser).filter(NoteUser.email == email)).all() is not None
+        return db.session.execute(db.select(NoteUser).filter(NoteUser.email == email)).scalars() is None

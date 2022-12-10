@@ -30,10 +30,10 @@ def login():
             login_user(user)
             next_page = request.args.get('next')
             if not next_page:
-                next_page = url_for("common.index")
+                next_page = url_for("note.note_all")
             return redirect(next_page)
         else:
-            error='Неверная пара логин/пароль'
+            error = 'Неверная пара логин/пароль'
     return render_template('auth/login.html', form=form, error=error)
 
 
@@ -57,7 +57,7 @@ def register():
         db.session.add(new_user)
         db.session.commit()
         return redirect(url_for('auth.login'))
-    else:
+    elif request.method == 'POST' and NoteUserRepository.is_email_exist(email=form.email.data):
         error = f"Пользователь с почтой '{form.email.data}' уже существует"
     return render_template('auth/register.html', form=form, error=error)
 
