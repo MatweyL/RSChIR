@@ -2,24 +2,17 @@ version: '3'
 
 
 services:
-  php:
-    container_name: php
-    build: php/
-    expose: 
-      - "80"
+  server:
+    container_name: server
+    image: server:latest
+    ports:
+      - "5000:5000"
+    command: python main.py
     volumes:
-      - ./php/php.ini:/usr/local/etc/php/conf.d/php.ini
-      - ./php/content/:/var/www/html/
-      - ./php/conf/000-default.conf:/etc/apache2/sites-available/000-default.conf
-    environment:
-      - HOST=db
-      - USERNAME=user
-      - PASSWORD=password
-      - NAME=appDB
+      - ./server:/app:z
     links:
       - nginx
       - mysql
-      - redis
   nginx:
     image: nginx:latest
     container_name: nginx
@@ -45,9 +38,3 @@ services:
       MYSQL_DATABASE: appDB
       MYSQL_USER: user
       MYSQL_PASSWORD: password
-  redis:
-    container_name: redis
-    image: redis:alpine3.16
-    restart: always
-    ports:
-      - "6379:6379"
