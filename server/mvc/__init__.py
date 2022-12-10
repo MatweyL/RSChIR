@@ -23,11 +23,13 @@ def create_app():
     from mvc.controllers.auth import auth
     from mvc.controllers.note import note
     from mvc.controllers.upload import upload
+    from mvc.controllers.statistic import statistic
 
     app.register_blueprint(common, url_prefix="/")
     app.register_blueprint(auth, url_prefix="/auth")
     app.register_blueprint(note, url_prefix="/note")
     app.register_blueprint(upload, url_prefix="/upload")
+    app.register_blueprint(statistic, url_prefix="/statistic")
 
     return app
 

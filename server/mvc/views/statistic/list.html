@@ -1,0 +1,38 @@
+{% extends "layouts/base.html" %}
+{% block heading %}
+Статистика
+{% endblock %}
+{% block content %}
+<h5 class="mt-3">Графики</h5>
+<div>
+{% if graphics_names %}
+    {% for graphic_name in graphics_names %}
+    <img src="{{ url_for('statistic.upload_graphic', filename=graphic_name) }}" alt="graphic">
+    {% endfor %}
+{% endif %}
+</div>
+<h5 class="mt-3">Данные</h5>
+{% if fake_notes %}
+<table class="table mt-3"><thead>
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">note_user_id</th>
+      <th scope="col">title</th>
+      <th scope="col">description</th>
+      <th scope="col">created_timestamp</th>
+      <th scope="col">updated_timestamp</th>
+    </tr>
+  </thead>
+{% for fake_note in fake_notes %}
+    <tr>
+        <td>{{ fake_note.id }}</td>
+        <td>{{ fake_note.note_user_id }}</td>
+        <td>{{ fake_note.title }}</td>
+        <td>{{ fake_note.description }}</td>
+        <td>{{ fake_note.created_timestamp }}</td>
+        <td>{{ fake_note.updated_timestamp }}</td>
+    </tr>
+{% endfor %}
+</table>
+{% endif %}
+{% endblock %}
