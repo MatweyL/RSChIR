@@ -1,4 +1,5 @@
 from flask_wtf import FlaskForm
+from flask_wtf.file import FileField
 from wtforms import StringField, PasswordField, SubmitField, IntegerField, SelectField, EmailField
 from wtforms.validators import DataRequired
 from wtforms.widgets import TextArea
@@ -30,3 +31,7 @@ class UpdateNoteForm(_BaseNoteForm):
     note_id = IntegerField('note_id', render_kw={"class": "d-none"})
     submit = SubmitField('Обновить', render_kw={"class": "btn btn-primary"})
 
+
+class UploadFileForm(FlaskForm):
+    file = FileField('Файл')
+    submit = SubmitField('Загрузить', render_kw={"class": "btn btn-primary"})

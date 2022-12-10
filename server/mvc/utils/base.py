@@ -12,6 +12,10 @@ def get_views_path():
     return os.path.join(pathlib.Path(__file__).parent.parent, "views")
 
 
+def get_upload_path():
+    return os.path.join(pathlib.Path(__file__).parent.parent, "upload")
+
+
 def get_env_path():
     return os.path.join(get_project_root(), ".env")
 
