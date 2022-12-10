@@ -7,3 +7,20 @@ vendor/
 !composer.json
 
 .idea
+
+.env
+env
+venv
+.idea/
+__pycache__/
+*.pyc
+*.session
+*.session-journal
+!requirements.txt
+bad_sessions
+sim_sessions
+postgres_data
+
+*.png
+*.jpg
+*jpeg
