@@ -39,6 +39,14 @@ def get_sqlite_connection_params():
     return "sqlite:///appDB.db"
 
 
+def get_db_url():
+    return f"mysql://{os.environ.get('DB_USER')}:" \
+           f"{os.environ.get('DB_PASSWORD')}@" \
+           f"{os.environ.get('DB_HOST')}:" \
+           f"{os.environ.get('DB_PORT')}/" \
+           f"{os.environ.get('DB_NAME')}"
+
+
 def get_app_host():
     return os.environ.get("APP_HOST")
 
@@ -49,6 +57,10 @@ def get_app_port():
 
 def get_secret_key():
     return os.environ.get("SECRET_KEY")
+
+
+def get_debug_state():
+    return os.environ.get("DEBUG") if os.environ.get("DEBUG") else False
 
 
 if __name__ == "__main__":

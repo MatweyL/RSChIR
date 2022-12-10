@@ -1,6 +1,7 @@
 import os.path
 
 from flask import Blueprint, render_template, send_from_directory, request, redirect, url_for
+from flask_login import login_required
 from werkzeug.utils import secure_filename
 
 from mvc.utils.base import get_upload_path
@@ -10,6 +11,7 @@ upload = Blueprint('upload', __name__)
 
 
 @upload.get('/')
+@login_required
 def get_upload_page():
     files = os.listdir(get_upload_path())
     files.remove(".gitkeep")
@@ -18,6 +20,7 @@ def get_upload_page():
 
 
 @upload.post('/')
+@login_required
 def upload_file():
     uploaded_file = request.files['file']
     filename = secure_filename(uploaded_file.filename)
@@ -29,6 +32,7 @@ def upload_file():
 
 
 @upload.get('/upload/<filename>')
+@login_required
 def get_uploaded_file(filename: str):
     if os.path.exists(os.path.join(get_upload_path(), filename)):
         return send_from_directory(get_upload_path(), filename)

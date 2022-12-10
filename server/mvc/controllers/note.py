@@ -1,5 +1,5 @@
 from flask import render_template, Blueprint, request, redirect, url_for
-from flask_login import current_user
+from flask_login import current_user, login_required
 
 from mvc.repositories.note import NoteRepository
 from mvc.utils.forms import CreateNoteForm, UpdateNoteForm
@@ -8,12 +8,14 @@ note = Blueprint('note', __name__)
 
 
 @note.route('/',  methods=["GET"])
+@login_required
 def note_all():
     notes = NoteRepository.get_all(current_user.id)
     return render_template("note/list.html", notes=notes)
 
 
 @note.route('/create', methods=["GET", "POST"])
+@login_required
 def note_create():
     form = CreateNoteForm()
     error = None
@@ -28,6 +30,7 @@ def note_create():
 
 
 @note.route('/update', methods=["GET", "POST"])
+@login_required
 def note_update():
     note_id = request.args.get('note_id')
     form = UpdateNoteForm()
@@ -51,6 +54,7 @@ def note_update():
 
 
 @note.route('/delete', methods=["GET"])
+@login_required
 def note_delete():
     note_id = request.args.get('note_id')
     NoteRepository.delete(note_id, current_user.id)

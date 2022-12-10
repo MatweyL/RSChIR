@@ -1,4 +1,5 @@
 from flask import Blueprint, render_template, send_from_directory
+from flask_login import login_required
 
 from mvc.repositories.fake_note import FakeNoteRepository
 from mvc.utils.base import get_image_path
@@ -9,6 +10,7 @@ fkr = FakeNoteRepository()
 
 
 @statistic.route('/',  methods=["GET"])
+@login_required
 def statistic_page():
     fake_notes = fkr.get_fake_notes()
     graphics_names = [
@@ -20,5 +22,6 @@ def statistic_page():
 
 
 @statistic.route('/<filename>')
+@login_required
 def upload_graphic(filename):
     return send_from_directory(get_image_path(), filename)

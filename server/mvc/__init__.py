@@ -2,14 +2,14 @@ from flask import Flask
 
 from mvc.controllers.auth import login_manager
 from mvc.models.base import db
-from mvc.utils.base import get_sqlite_connection_params, get_views_path, get_secret_key, get_upload_path
+from mvc.utils.base import get_sqlite_connection_params, get_views_path, get_secret_key, get_upload_path, get_db_url
 
 
 def create_app():
     app = Flask(__name__,
                 template_folder=get_views_path())
     app.config['SECRET_KEY'] = get_secret_key()
-    app.config['SQLALCHEMY_DATABASE_URI'] = get_sqlite_connection_params()
+    app.config['SQLALCHEMY_DATABASE_URI'] = get_db_url()
     app.config['MAX_CONTENT_LENGTH'] = 1024 * 1024
     app.config['UPLOAD_EXTENSIONS'] = ['.pdf']
     app.config['UPLOAD_PATH'] = get_upload_path()
@@ -32,7 +32,3 @@ def create_app():
     app.register_blueprint(statistic, url_prefix="/statistic")
 
     return app
-
-
-# TODO: Загрузка PDF
-# TODO: Графики
