@@ -18,9 +18,11 @@ def create_app():
     from mvc.controllers.common import common
 
     from mvc.controllers.auth import auth
+    from mvc.controllers.note import note
 
     app.register_blueprint(common, url_prefix="/")
     app.register_blueprint(auth, url_prefix="/auth")
+    app.register_blueprint(note, url_prefix="/note")
 
     return app
 

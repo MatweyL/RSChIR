@@ -4,7 +4,14 @@
     <hr>
     <nav class="navbar navbar-light justify-content-between mt-3">
         <a class="navbar-brand" href="/">Notes</a>
-
+            {% if current_user.is_authenticated %}
+            <span class="nav-item">
+                <a class="" href="{{ url_for('note.note_all') }}">Мои заметки</a>
+            </span>
+            <span class="nav-item">
+                <a class="" href="{{ url_for('note.note_create') }}">Создать</a>
+            </span>
+            {% endif %}
             <span class="nav-item">
                 <a class="btn btn-outline-secondary" href="{{ url_for('auth.register') }}">Зарегистироваться</a>
                 {% if current_user.is_authenticated %}

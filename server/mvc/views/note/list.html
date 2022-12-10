@@ -1,0 +1,31 @@
+{% extends "layouts/base.html" %}
+{% block heading %}
+Заметки
+{% endblock %}
+{% block content %}
+{% if notes %}
+    {% for note in notes %}
+        <div class='card mt-2'>
+            <div class='card-body'>
+                <h5 class='card-title'>{{ note.title }}</h5>
+                <p class='card-text'>{{ note.description }}</p>
+
+                <div class=''>
+                    <a class="btn btn-outline-success" href="{{ url_for('note.note_update', note_id=note.id) }}">Редактировать</a>
+                    <a class="btn btn-outline-danger" href="{{ url_for('note.note_delete', note_id=note.id) }}">Удалить</a>
+<!--                <form method='GET' action='update_note.php' class='d-inline'><input type='number' name='note_id' value='$note[0]' hidden><button class='btn btn-outline-success' type='submit'>Редактировать</button></form>-->
+<!--                <form method='POST' action='delete_note.php' class='d-inline'><input type='number' name='note_id' value='$note[0]' hidden><button class='btn btn-outline-danger' type='submit'>Удалить</button></form>-->
+                </div>
+            </div>
+                <div class="card-footer mt-3">
+                  <small class="text-muted">Создано: {{ note.created_timestamp }}</small><br>
+                  <small class="text-muted">Обновлено: {{ note.updated_timestamp }}</small>
+                </div>
+          </div>
+    {% endfor %}
+{% else %}
+<div>
+    <span>{{ current_user.nickname }}</span>, у вас пока нет ни одной заметки.
+</div>
+{% endif %}
+{% endblock %}

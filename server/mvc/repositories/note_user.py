@@ -18,7 +18,7 @@ class NoteUserRepository:
 
     @staticmethod
     def get_all():
-        return db.session.execute(db.select(NoteUser)).all()
+        return db.session.execute(db.select(NoteUser)).scalars()
 
     @staticmethod
     def is_email_exist(email):
